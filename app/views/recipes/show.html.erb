@@ -1,2 +1,13 @@
-<h1>Recipes#show</h1>
-<p>Find me in app/views/recipes/show.html.erb</p>
+<h1><%= @recipe.name %></h1>
+
+<h2>Ingredientes:</h2>
+<ul>
+  <% @recipe.ingredients.each do |ingredient| %>
+    <li><%= ingredient.name %>: <%= ingredient.quantity %></li>
+  <% end %>
+</ul>
+
+<hr>
+  <%= link_to "Editar", edit_recipe_path(@recipe), class: "btn btn-primary" %>
+  <%= link_to "Regresar", recipes_path, class: "btn btn-secondary" %>
+  <%= link_to "Eliminar", recipe_path(@recipe), method: :delete, data: { confirm: '¿Estás seguro de que deseas eliminar esta receta?' }, class: "btn btn-danger" %>
